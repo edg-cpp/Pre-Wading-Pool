@@ -1,3 +1,4 @@
+import pygame
 
 #à refaire dans une maniere plus logique/mathematique
 def draw_hangman(screen,color):
