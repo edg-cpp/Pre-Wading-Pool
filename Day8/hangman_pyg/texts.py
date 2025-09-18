@@ -1,8 +1,12 @@
 import pygame
 
 pygame.font.init()
-font = pygame.font.Font("sources/pixel.ttf", 30)
-font2 = pygame.font.Font("sources/pixel.ttf", 50)
+
+# les fonts
+font_15 = pygame.font.Font("sources/pixel.ttf", 15)
+font_30 = pygame.font.Font("sources/pixel.ttf", 30)
+font_50 = pygame.font.Font("sources/pixel.ttf", 50)
+font_60 = pygame.font.Font("sources/pixel.ttf", 60)
 
 image = pygame.image.load("sources/backround.jpg")
 image_rect = image.get_rect()
@@ -16,53 +20,55 @@ centre_bas = (300, 400)
 
 
 def opening_screen(screen):
-    font1 = pygame.font.Font("sources/pixel.ttf", 60)
-    font2 = pygame.font.Font("sources/pixel.ttf", 30)
 
-    intro1 = font1.render("HANGMAN", True, main_color)
-    intro2 = font2.render("CLICK TO START", True, main_color)
+    intro1 = font_60.render("HANGMAN", True, main_color)
+    intro2 = font_30.render("CLICK TO START", True, main_color)
+    # intro3 = font_50.render("ESC TO QUIT", True, main_color)
 
     introRect1 = intro1.get_rect()
     introRect2 = intro2.get_rect()
+    # introRect3 = intro3.get_rect()
+
     introRect1.center = centre_haut
     introRect2.center = centre
+    # introRect3.center = centre_bas
 
     screen.blit(intro1, introRect1)
     screen.blit(intro2, introRect2)
+    # screen.blit(intro3, introRect3)
 
 
 def initial_message(screen):
-    text = font.render("Please enter a letter: ", True, main_color)
+    text = font_30.render("Please enter a letter: ", True, main_color)
     textRect = text.get_rect()
     textRect.center = centre_haut
     screen.blit(text, textRect)
 
 
 def show_penalties(screen, pen):
-    font_pen = pygame.font.Font("sources/pixely.ttf", 15)
     str = f"Penalties : {pen}"
-    text = font_pen.render(str, True, main_color)
+    text = font_15.render(str, True, main_color)
     textRect = text.get_rect()
     textRect.center = (300, 100)
     screen.blit(text, textRect)
 
 
 def show_hidden_word(screen, hword):
-    text = font2.render(hword, True, main_color)
+    text = font_50.render(hword, True, main_color)
     textRect = text.get_rect()
     textRect.center = centre
     screen.blit(text, textRect)
 
 
 def repetition_error(screen):
-    text = font.render("You already guessed this", True, (255, 0, 0))
+    text = font_30.render("You already guessed this", True, (255, 0, 0))
     textRect = text.get_rect()
     textRect.center = centre_bas
     screen.blit(text, textRect)
 
 
 def letter_error(screen):
-    text = font.render("You must enter a letter", True, (255, 0, 0))
+    text = font_30.render("You must enter a letter", True, (255, 0, 0))
     textRect = text.get_rect()
     textRect.center = centre_bas
     screen.blit(text, textRect)
@@ -74,7 +80,7 @@ def guessed_letters(screen, list, coor):
     str_guessed = ""
     for e in set(list):
         str_guessed += e + " "
-    text = font.render(str_guessed, True, main_color)
+    text = font_30.render(str_guessed, True, main_color)
     textRect = text.get_rect()
     textRect.center = coor
     screen.blit(text, textRect)
@@ -82,9 +88,9 @@ def guessed_letters(screen, list, coor):
 
 def win_text(screen, word):
     screen.blit(image, image_rect)
-    text = font2.render("YOU WON", True, (255, 0, 0))
+    text = font_50.render("YOU WON", True, (255, 0, 0))
     str = "The word was:" + word
-    text2 = font.render(str, True, main_color)
+    text2 = font_30.render(str, True, main_color)
     textRect = text.get_rect()
     text2Rect = text2.get_rect()
     textRect.center = centre_haut
@@ -95,9 +101,9 @@ def win_text(screen, word):
 
 def lose_text(screen, word):
     screen.blit(image, image_rect)
-    text = font2.render("You Lost :(", True, (255, 0, 0))
+    text = font_50.render("You Lost :(", True, (255, 0, 0))
     str = "The word was:" + word
-    text2 = font.render(str, True, main_color)
+    text2 = font_30.render(str, True, main_color)
     textRect = text.get_rect()
     text2Rect = text2.get_rect()
     textRect.center = centre_haut
@@ -107,7 +113,7 @@ def lose_text(screen, word):
 
 
 def print_check(screen, txt):
-    text = font.render(txt, True, main_color)
+    text = font_30.render(txt, True, main_color)
     textRect = text.get_rect()
     textRect.center = (300, 500)
     screen.blit(text, textRect)
