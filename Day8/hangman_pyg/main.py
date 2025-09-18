@@ -17,7 +17,6 @@ hidden_word = hng.hidden(word)
 penalties = 0
 not_in_word = []
 in_word = []
-is_running = False
 coor_comm = (300, 350)
 
 
@@ -40,17 +39,30 @@ while True:
             screen.blit(image, image_rect)
             txt.initial_message(screen, (300, 20))
             txt.show_hidden_word(screen, hidden_word)
+            txt.show_penalties(screen, penalties)
+            txt.guessed_letters(screen, not_in_word, (300, 500))
 
             if event.type == pygame.KEYDOWN:
                 input = pygame.key.name(event.key)
 
-                if input in not_in_word or event in in_word:
-                    txt.repetition_error()
+                if input in not_in_word or input in in_word:
+                    txt.repetition_error(screen, coor_comm)
 
                 if input not in string.ascii_letters:
-                    txt.letter_error()
+                    txt.letter_error(screen, coor_comm)
 
                 else:
                     letter = input
+                    index = hng.find_letter(word, letter)
+                    if index == False:
+                        penalties += 1
+                        not_in_word.append(letter)
+                        if penalties == 12:
+                            txt.lose_text(screen, word)
+                    else:
+                        in_word.append(letter)
+                        hidden_word = hng.reveal_letter(hidden_word, letter, index)
+                        if hidden_word == word:
+                            txt.win_text(screen, word)
 
         pygame.display.update()
