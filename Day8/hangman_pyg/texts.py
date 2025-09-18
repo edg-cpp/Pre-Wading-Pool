@@ -57,7 +57,7 @@ def guessed_letters(screen, list, coor):
 
 
 def win_text(screen, word):
-    screen.blit(text, textRect)
+    screen.blit(image, image_rect)
     text = font2.render("YOU WON", True, (255, 0, 0))
     str = "The word was:" + word
     text2 = font.render(str, True, (0, 0, 0))
@@ -65,10 +65,12 @@ def win_text(screen, word):
     text2Rect = text2.get_rect()
     textRect.center = (300, 200)
     text2Rect.center = (300, 400)
+    screen.blit(text, textRect)
+    screen.blit(text2, text2Rect)
 
 
 def lose_text(screen, word):
-    screen.blit(text, textRect)
+    screen.blit(image, image_rect)
     text = font2.render("You Lost :(", True, (255, 0, 0))
     str = "The word was:" + word
     text2 = font.render(str, True, (0, 0, 0))
@@ -76,6 +78,8 @@ def lose_text(screen, word):
     text2Rect = text2.get_rect()
     textRect.center = (300, 300)
     text2Rect.center = (300, 400)
+    screen.blit(text, textRect)
+    screen.blit(text2, text2Rect)
 
 
 def show_penalties(screen, pen):
