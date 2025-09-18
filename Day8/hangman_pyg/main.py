@@ -17,7 +17,6 @@ hidden_word = hng.hidden(word)
 penalties = 0
 not_in_word = []
 in_word = []
-coor_comm = (300, 350)
 
 
 # font=pygame.font.SysFont()
@@ -47,10 +46,14 @@ while True:
                 inp = inp.lower()
 
                 if inp in not_in_word or inp in in_word:
-                    txt.repetition_error(screen, coor_comm)
+                    txt.repetition_error(screen)
+                    pygame.display.update()
+                    pygame.time.delay(1000)
 
                 if inp not in string.ascii_letters:
-                    txt.letter_error(screen, coor_comm)
+                    txt.letter_error(screen)
+                    pygame.display.update()
+                    pygame.time.delay(1000)
 
                 else:
                     letter = inp
@@ -58,12 +61,11 @@ while True:
                     if index == False:
                         penalties += 1
                         not_in_word.append(letter)
-                        if penalties == 12:
+                        if penalties > 12:
                             txt.lose_text(screen, word)
                             pygame.display.update()
                             pygame.time.delay(3000)
                             pygame.quit()
-                            exit()
 
                     else:
                         in_word.append(letter)
@@ -73,5 +75,23 @@ while True:
                             pygame.display.update()
                             pygame.time.delay(3000)
                             pygame.quit()
+
+        # for event in pygame.event.get():
+        #    if event.type == pygame.QUIT:
+        #        pygame.quit()
+        #        raise SystemExit
+
+        #    txt.print_check(screen, "Click to try again")
+        #    pygame.time.delay(3000)
+
+        #    if event.type == pygame.MOUSEBUTTONDOWN:
+        #        word = hng.return_random(
+        #            english_words.get_english_words_set(["web2"], lower=True)
+        #        )
+        #        hidden_word = hng.hidden(word)
+        #        penalties = 0
+        #        not_in_word = []
+        #        in_word = []
+        #        click = True
 
         pygame.display.update()

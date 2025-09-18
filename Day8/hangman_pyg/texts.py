@@ -61,18 +61,20 @@ def repetition_error(screen):
     screen.blit(text, textRect)
 
 
-def letter_error(screen, coor):
+def letter_error(screen):
     text = font.render("You must enter a letter", True, (255, 0, 0))
     textRect = text.get_rect()
-    textRect.center = coor
+    textRect.center = centre_bas
     screen.blit(text, textRect)
 
 
 def guessed_letters(screen, list, coor):
     font = pygame.font.Font("sources/pixely.ttf", 30)
     # il doit y avoir une meilleure maniere de faire ça
-    str_guess = str(set(list))[1:-1]
-    text = font.render(str_guess, True, main_color)
+    str_guessed = ""
+    for e in set(list):
+        str_guessed += e + " "
+    text = font.render(str_guessed, True, main_color)
     textRect = text.get_rect()
     textRect.center = coor
     screen.blit(text, textRect)

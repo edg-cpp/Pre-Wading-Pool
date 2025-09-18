@@ -1,7 +1,10 @@
 à corriger:
+    - repetiton ajoute aux pentalies
+
+à ameliorer:
     - affichage messages d'erreurs
     - ajout lettre dans list en doublon
-    - les lettres pas devinés rentrent pas à l'écran
+    - affichage des lettres déjà troucé
 
 à implementer:
     - changement de couleur penalties
