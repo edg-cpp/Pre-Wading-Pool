@@ -17,20 +17,3 @@ def draw_hangman(screen, color):
     pygame.draw.line(screen, color, [300, 50], [100, 50], 3)
     pygame.draw.line(screen, color, [100, 50], [100, 550], 3)
     pygame.draw.line(screen, color, [100, 550], [450, 550], 3)
-
-
-def opening_screen(screen):
-    font1 = pygame.font.Font("sources/pixely.ttf", 60)
-    font2 = pygame.font.Font("sources/pixely.ttf", 30)
-
-    intro1 = font1.render("HANGMAN", True, (0, 0, 0))
-    intro2 = font2.render("CLICK TO START", True, (0, 0, 0))
-
-    introRect1 = intro1.get_rect()
-    introRect2 = intro2.get_rect()
-    introRect1.center = (300, 200)
-    introRect2.center = (300, 260)
-
-    draw_hangman(screen, (255, 255, 255))
-    screen.blit(intro1, introRect1)
-    screen.blit(intro2, introRect2)

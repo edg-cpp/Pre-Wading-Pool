@@ -1,5 +1,5 @@
 import pygame
-import op_screen as ops  # l'affichage du début
+import draw  # dessin du bonhomme
 import english_words
 import texts as txt  # les affichages du text
 import py_hangman as hng  # copie du code du jour 7
@@ -25,7 +25,7 @@ click = False
 
 while True:
     screen.blit(image, image_rect)
-    ops.opening_screen(screen)
+    txt.opening_screen(screen)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -37,13 +37,14 @@ while True:
 
         if click == True:
             screen.blit(image, image_rect)
-            txt.initial_message(screen, (300, 20))
+            txt.initial_message(screen)
             txt.show_hidden_word(screen, hidden_word)
             txt.show_penalties(screen, penalties)
             txt.guessed_letters(screen, not_in_word, (300, 500))
 
             if event.type == pygame.KEYDOWN:
                 inp = pygame.key.name(event.key)
+                inp = inp.lower()
 
                 if inp in not_in_word or inp in in_word:
                     txt.repetition_error(screen, coor_comm)

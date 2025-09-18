@@ -1,9 +1,7 @@
 à corriger:
     - affichage messages d'erreurs
     - ajout lettre dans list en doublon
-    - t'as gagné ne s'affiche pas
-    - t'as perdu ne s'affiche pas
-    - gagner et perdre
+    - les lettres pas devinés rentrent pas à l'écran
 
 à implementer:
     - changement de couleur penalties
