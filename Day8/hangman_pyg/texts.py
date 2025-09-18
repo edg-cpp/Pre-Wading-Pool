@@ -23,7 +23,6 @@ centre_bas = (300, 400)
 
 
 def opening_screen(screen):
-
     intro1 = font_60.render("HANGMAN", True, white)
     intro2 = font_30.render("CLICK TO START", True, white)
     # intro3 = font_50.render("ESC TO QUIT", True, white)
@@ -50,7 +49,10 @@ def initial_message(screen):
 
 def show_penalties(screen, pen):
     str = f"Penalties : {pen}"
-    text = font_15.render(str, True, white)
+    color_text = white
+    if pen > 8:
+        color_text = red
+    text = font_15.render(str, True, color_text)
     textRect = text.get_rect()
     textRect.center = (300, 100)
     screen.blit(text, textRect)
