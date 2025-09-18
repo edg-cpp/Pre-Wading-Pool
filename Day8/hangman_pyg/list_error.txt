@@ -1,4 +1,5 @@
 à corriger:
+    -bug sur ù --> devrait pas arriver c'est pas dans ascii_letters
 
 à ameliorer:
     - affichage messages d'erreurs
