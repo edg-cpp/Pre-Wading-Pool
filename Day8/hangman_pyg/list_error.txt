@@ -1,5 +1,4 @@
 à corriger:
-    - repetiton ajoute aux pentalies
 
 à ameliorer:
     - affichage messages d'erreurs
@@ -7,5 +6,5 @@
     - affichage des lettres déjà troucé
 
 à implementer:
-    - changement de couleur penalties
     - try again ?
+    - click esc to quit

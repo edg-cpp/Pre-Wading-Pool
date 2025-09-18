@@ -1,7 +1,7 @@
 import pygame
 
 
-def draw_hangman(screen, color):
+def draw_hangman1(screen, color):
     # tete
     pygame.draw.circle(screen, color, center=[300, 150], radius=50, width=3)
     # corps
@@ -17,3 +17,6 @@ def draw_hangman(screen, color):
     pygame.draw.line(screen, color, [300, 50], [100, 50], 3)
     pygame.draw.line(screen, color, [100, 50], [100, 550], 3)
     pygame.draw.line(screen, color, [100, 550], [450, 550], 3)
+
+
+# def draw_hangman(screen):

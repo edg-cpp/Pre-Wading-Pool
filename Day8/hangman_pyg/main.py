@@ -66,16 +66,16 @@ while True:
                     txt.repetition_error(screen)
                     pygame.display.update()
                     pygame.time.delay(1000)
+                    continue  # pour sauter le reste de la boucle
 
                 # on verifie que l'input est une lettre
                 if letter not in string.ascii_letters:
-                    """je ne sais pas comment reussir a garder le message sans le delay"""
                     txt.letter_error(screen)
                     pygame.display.update()
                     pygame.time.delay(1000)
+                    continue
 
                 else:
-                    """pourquoi on rentre dans cet else quand inp a déjà sorti ---> je sais parce que penalties augmente"""
 
                     # lettre est dedans -> renvoiles indices du lettre // lettre n'est pas dedans -> renvoi faux
                     # on note le resultat dans index
@@ -87,7 +87,7 @@ while True:
                         not_in_word.append(letter)
 
                         # condition pour gagner
-                        if penalties > 12:
+                        if penalties > 11:
                             txt.lose_text(screen, word)
                             pygame.display.update()
                             pygame.time.delay(3000)
