@@ -88,7 +88,7 @@ def win_text(screen, word):
     textRect = text.get_rect()
     text2Rect = text2.get_rect()
     textRect.center = centre_haut
-    text2Rect.center = centre_bas
+    text2Rect.center = centre
     screen.blit(text, textRect)
     screen.blit(text2, text2Rect)
 
