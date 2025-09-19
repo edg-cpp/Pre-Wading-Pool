@@ -17,7 +17,6 @@ image_rect = image.get_rect()
 # mot à deviner et sa version caché
 word = hng.return_random(english_words.get_english_words_set(["web2"], lower=True))
 hidden_word = hng.hidden(word)
-
 # compteur des faux essaies
 penalties = 0
 
@@ -53,7 +52,7 @@ while True:
             txt.initial_message(screen)
             txt.show_hidden_word(screen, hidden_word)
             txt.show_penalties(screen, penalties)
-            txt.guessed_letters(screen, not_in_word, (300, 500))
+            txt.guessed_letters(screen, not_in_word)
 
             # on a uniquement le cas ou on rentre lettre par lettre
             if event.type == pygame.KEYDOWN:
@@ -69,20 +68,18 @@ while True:
                     continue  # pour sauter le reste de la boucle
 
                 # on verifie que l'input est une lettre
-                if letter not in string.ascii_letters or letter == "ù":
-                    """j'ai du faire un ajout manuel sur ù - je ne sais pas la raison du bug"""
+                if letter not in string.ascii_letters:
                     txt.letter_error(screen)
                     pygame.display.update()
                     pygame.time.delay(1000)
                     continue
 
                 else:
-                    # lettre est dedans -> renvoiles indices du lettre // lettre n'est pas dedans -> renvoi faux
-                    # on note le resultat dans index
-                    index = hng.find_letter(word, letter)
+                    # renvoi une liste avec les indices
+                    idx = hng.find_letter(word, letter)
 
                     # cas ou on n'a pas trouvé le lettre
-                    if index == []:
+                    if idx == []:
                         penalties += 1
                         not_in_word.append(letter)
 
@@ -98,7 +95,7 @@ while True:
                         in_word.append(letter)
 
                         # on modifie notre mot caché pour qu'elle affiche la lettre trouvé
-                        hidden_word = hng.reveal_letter(hidden_word, letter, index)
+                        hidden_word = hng.reveal_letter(hidden_word, letter, idx)
 
                         # condition pour gagner
                         if "".join(hidden_word) == word:

@@ -47,17 +47,14 @@ def find_letter1(str, letter):
         return False
 
 
-def find_letter(str, letter):
-    i = str.find(letter)
-    i_list = []
-
-    while i != -1:
-        i_list.append(i)
-        str = str[i + 1 :]
-        i = str.find(letter)
-        print(str)
-
-    return i_list
+def find_letter(word, letter):
+    copie = word
+    ind = word.find(letter)
+    ind_list = []
+    while ind != -1:
+        ind_list.append(ind)
+        ind = word.find(letter, ind + 1)
+    return ind_list
 
 
 # premiere version
@@ -66,6 +63,7 @@ def reveal_letter1(str, letter, i_list):
     for i in i_list:
         str_l[i] = letter
     str = "".join(str_l)
+
     return str
 
 

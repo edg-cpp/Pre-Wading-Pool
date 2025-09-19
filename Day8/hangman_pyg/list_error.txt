@@ -1,9 +1,7 @@
 à corriger:
+    - ù fait bugger
 
 à ameliorer:
-    - affichage messages d'erreurs
-    - fonction pour affichage des lettres trouvés
-        - affichage des lettres déjà trouvé depasse l'écran
 
 à implementer:
     - try again
