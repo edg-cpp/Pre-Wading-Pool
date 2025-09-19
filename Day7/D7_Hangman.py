@@ -121,7 +121,7 @@ def hangman():
 
         if not_in_word != []:
             print("Letters are not in the word:")
-            print(not_in_word)
+            print(*not_in_word)
 
         letter = input("Please enter a letter: ").lower()
 
