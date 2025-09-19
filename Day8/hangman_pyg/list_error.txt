@@ -3,9 +3,7 @@
 à ameliorer:
     - affichage messages d'erreurs
     - fonction pour affichage des lettres trouvés
-        - ajout lettre dans list en doublon
         - affichage des lettres déjà trouvé depasse l'écran
-        - loop pour tourner les trucs en lettre
 
 à implementer:
     - try again
