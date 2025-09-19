@@ -1,11 +1,12 @@
 à corriger:
-    -bug sur ù --> devrait pas arriver c'est pas dans ascii_letters
 
 à ameliorer:
     - affichage messages d'erreurs
-    - ajout lettre dans list en doublon
-    - affichage des lettres déjà troucé
+    - fonction pour affichage des lettres trouvés
+        - ajout lettre dans list en doublon
+        - affichage des lettres déjà trouvé depasse l'écran
+        - loop pour tourner les trucs en lettre
 
 à implementer:
-    - try again ?
+    - try again
     - click esc to quit

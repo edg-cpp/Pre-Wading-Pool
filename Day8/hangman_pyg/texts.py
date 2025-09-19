@@ -1,4 +1,5 @@
 import pygame
+import time
 
 pygame.font.init()
 
@@ -15,16 +16,17 @@ image_rect = image.get_rect()
 # couleurs
 white = (255, 255, 255)
 red = (255, 0, 0)
+green = (0, 255, 0)
 
 # coordinates
+centre_bas = (300, 400)
 centre = (300, 300)
 centre_haut = (300, 200)
-centre_bas = (300, 400)
 
 
 def opening_screen(screen):
     intro1 = font_60.render("HANGMAN", True, white)
-    intro2 = font_30.render("CLICK TO START", True, white)
+    intro2 = font_30.render("CLICK TO START", True, green)
     # intro3 = font_50.render("ESC TO QUIT", True, white)
 
     introRect1 = intro1.get_rect()
@@ -36,7 +38,10 @@ def opening_screen(screen):
     # introRect3.center = centre_bas
 
     screen.blit(intro1, introRect1)
-    screen.blit(intro2, introRect2)
+
+    # pour faire clignoter
+    if time.time() % 1 > 0.5:
+        screen.blit(intro2, introRect2)
     # screen.blit(intro3, introRect3)
 
 
@@ -59,7 +64,9 @@ def show_penalties(screen, pen):
 
 
 def show_hidden_word(screen, hword):
-    text = font_50.render(hword, True, white)
+    if len(hword) > 8:
+        text = font_30.render("".join(hword), True, white)
+    text = font_30.render("".join(hword), True, white)
     textRect = text.get_rect()
     textRect.center = centre
     screen.blit(text, textRect)
@@ -80,11 +87,7 @@ def letter_error(screen):
 
 
 def guessed_letters(screen, list, coor):
-    font = pygame.font.Font("sources/pixely.ttf", 30)
-    # il doit y avoir une meilleure maniere de faire ça
-    str_guessed = ""
-    for e in set(list):
-        str_guessed += e + " "
+    str_guessed = " ".join(list)
     text = font_30.render(str_guessed, True, white)
     textRect = text.get_rect()
     textRect.center = coor
@@ -94,7 +97,7 @@ def guessed_letters(screen, list, coor):
 def win_text(screen, word):
     screen.blit(image, image_rect)
     text = font_50.render("YOU WON", True, red)
-    str = "The word was:" + word
+    str = "The word was: " + word
     text2 = font_30.render(str, True, white)
     textRect = text.get_rect()
     text2Rect = text2.get_rect()
@@ -107,7 +110,7 @@ def win_text(screen, word):
 def lose_text(screen, word):
     screen.blit(image, image_rect)
     text = font_50.render("You Lost :(", True, red)
-    str = "The word was:" + word
+    str = "The word was: " + word
     text2 = font_30.render(str, True, white)
     textRect = text.get_rect()
     text2Rect = text2.get_rect()

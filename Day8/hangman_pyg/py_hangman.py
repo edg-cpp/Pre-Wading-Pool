@@ -22,14 +22,20 @@ def return_random(st):
 words_set = get_english_words_set(["web2"], lower=True)
 
 
-def hidden(str):
+# premiere version
+def hidden1(str):
     a = ["_" for x in str]
     return "".join(
         a
     )  # convertit un liste/tuple en string et mettant ce qui entre gymets entre les elements du array
 
 
-def find_letter(str, letter):
+def hidden(str):
+    return ["_" for x in str]
+
+
+# premiere version
+def find_letter1(str, letter):
     if letter in str:
         index = [str.find(letter, i) for i in range(len(str))]
         index = list(set(index))  # on enleve les doublons
@@ -41,12 +47,32 @@ def find_letter(str, letter):
         return False
 
 
-def reveal_letter(str, letter, i_list):
+def find_letter(str, letter):
+    i = str.find(letter)
+    i_list = []
+
+    while i != -1:
+        i_list.append(i)
+        str = str[i + 1 :]
+        i = str.find(letter)
+        print(str)
+
+    return i_list
+
+
+# premiere version
+def reveal_letter1(str, letter, i_list):
     str_l = [s for s in str]
     for i in i_list:
         str_l[i] = letter
     str = "".join(str_l)
     return str
+
+
+def reveal_letter(str_l, letter, i_list):
+    for i in i_list:
+        str_l[i] = letter
+    return str_l
 
 
 ############################### PseudoCode - Le plan des cas
